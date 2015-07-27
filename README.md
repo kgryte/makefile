@@ -1,6 +1,6 @@
 Makefile
 =========
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > Creates a `Makefile`.
 
@@ -171,8 +171,8 @@ Copyright &copy; 2015. Athan Reines.
 [travis-image]: http://img.shields.io/travis/kgryte/makefile/master.svg
 [travis-url]: https://travis-ci.org/kgryte/makefile
 
-[coveralls-image]: https://img.shields.io/coveralls/kgryte/makefile/master.svg
-[coveralls-url]: https://coveralls.io/r/kgryte/makefile?branch=master
+[codecov-image]: https://img.shields.io/codecov/c/github/kgryte/makefile/master.svg
+[codecov-url]: https://codecov.io/github/kgryte/makefile?branch=master
 
 [dependencies-image]: http://img.shields.io/david/kgryte/makefile.svg
 [dependencies-url]: https://david-dm.org/kgryte/makefile
