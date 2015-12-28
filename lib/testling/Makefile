@@ -36,6 +36,12 @@ ISTANBUL_LCOV_INFO_PATH ?= $(ISTANBUL_OUT)/lcov.info
 ISTANBUL_HTML_REPORT_PATH ?= $(ISTANBUL_OUT)/lcov-report/index.html
 
 
+# TESTLING #
+
+TESTLING ?= ./node_modules/.bin/testling
+TESTLING_DIR ?= ./
+
+
 # JSHINT #
 
 JSHINT ?= ./node_modules/.bin/jshint
@@ -108,6 +114,30 @@ view-cov: view-istanbul-report
 
 view-istanbul-report:
 	$(OPEN) $(ISTANBUL_HTML_REPORT_PATH)
+
+
+
+# BROWSER TESTS #
+
+.PHONY: test-browsers test-testling view-browser-tests view-testling
+
+test-browsers: test-testling
+
+test-testling: node_modules
+	NODE_ENV=$(NODE_ENV) \
+	NODE_PATH=$(NODE_PATH_TEST) \
+	$(TESTLING) \
+		$(TESTLING_DIR)
+
+view-browser-tests: view-testling
+
+view-testling: node_modules
+	NODE_ENV=$(NODE_ENV) \
+	NODE_PATH=$(NODE_PATH_TEST) \
+	$(TESTLING) \
+		$(TESTLING_DIR) \
+		--x $(OPEN)
+
 
 
 # LINT #

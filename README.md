@@ -1,6 +1,6 @@
 Makefile
 =========
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][build-image]][build-url] [![Coverage Status][coverage-image]][coverage-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > Creates a `Makefile`.
 
@@ -168,11 +168,11 @@ Copyright &copy; 2015. Athan Reines.
 [npm-image]: http://img.shields.io/npm/v/@kgryte/makefile.svg
 [npm-url]: https://npmjs.org/package/@kgryte/makefile
 
-[travis-image]: http://img.shields.io/travis/kgryte/makefile/master.svg
-[travis-url]: https://travis-ci.org/kgryte/makefile
+[build-image]: http://img.shields.io/travis/kgryte/makefile/master.svg
+[build-url]: https://travis-ci.org/kgryte/makefile
 
-[codecov-image]: https://img.shields.io/codecov/c/github/kgryte/makefile/master.svg
-[codecov-url]: https://codecov.io/github/kgryte/makefile?branch=master
+[coverage-image]: https://img.shields.io/codecov/c/github/kgryte/makefile/master.svg
+[coverage-url]: https://codecov.io/github/kgryte/makefile?branch=master
 
 [dependencies-image]: http://img.shields.io/david/kgryte/makefile.svg
 [dependencies-url]: https://david-dm.org/kgryte/makefile
