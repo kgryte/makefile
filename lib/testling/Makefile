@@ -38,7 +38,6 @@ ISTANBUL_HTML_REPORT_PATH ?= $(ISTANBUL_OUT)/lcov-report/index.html
 # BROWSERIFY #
 
 BROWSERIFY ?= ./node_modules/.bin/browserify
-BROWSERIFY_PROXYQUIRE ?= ./node_modules/proxyquire-universal
 
 
 # TESTLING #
@@ -131,7 +130,6 @@ test-testling: node_modules
 	NODE_ENV=$(NODE_ENV) \
 	NODE_PATH=$(NODE_PATH_TEST) \
 	$(BROWSERIFY) \
-		-p $(BROWSERIFY_PROXYQUIRE) \
 		$(TESTS) \
 	| $(TESTLING) \
 	| $(TAP_REPORTER)
@@ -142,7 +140,6 @@ view-testling: node_modules
 	NODE_ENV=$(NODE_ENV) \
 	NODE_PATH=$(NODE_PATH_TEST) \
 	$(BROWSERIFY) \
-		-p $(BROWSERIFY_PROXYQUIRE) \
 		$(TESTS) \
 	| $(TESTLING) \
 		--x $(OPEN) \
