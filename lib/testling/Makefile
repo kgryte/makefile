@@ -20,11 +20,10 @@ endif
 NOTES ?= 'TODO|FIXME|WARNING|HACK|NOTE'
 
 
-# MOCHA #
+# TAPE #
 
-MOCHA ?= ./node_modules/.bin/mocha
-_MOCHA ?= ./node_modules/.bin/_mocha
-MOCHA_REPORTER ?= spec
+TAPE ?= ./node_modules/.bin/tape
+TAP_REPORTER ?=  ./node_modules/.bin/tap-spec
 
 
 # ISTANBUL #
@@ -34,6 +33,12 @@ ISTANBUL_OUT ?= ./reports/coverage
 ISTANBUL_REPORT ?= lcov
 ISTANBUL_LCOV_INFO_PATH ?= $(ISTANBUL_OUT)/lcov.info
 ISTANBUL_HTML_REPORT_PATH ?= $(ISTANBUL_OUT)/lcov-report/index.html
+
+
+# BROWSERIFY #
+
+BROWSERIFY ?= ./node_modules/.bin/browserify
+BROWSERIFY_PROXYQUIRE ?= ./node_modules/proxyquire-universal
 
 
 # TESTLING #
@@ -75,33 +80,32 @@ notes:
 
 # UNIT TESTS #
 
-.PHONY: test test-mocha
+.PHONY: test test-tape
 
-test: test-mocha
+test: test-tape
 
-test-mocha: node_modules
+test-tape: node_modules
 	NODE_ENV=$(NODE_ENV) \
 	NODE_PATH=$(NODE_PATH_TEST) \
-	$(MOCHA) \
-		--reporter $(MOCHA_REPORTER) \
-		$(TESTS)
+	$(TAPE) \
+		$(TESTS) \
+	| $(TAP_REPORTER)
 
 
 
 # CODE COVERAGE #
 
-.PHONY: test-cov test-istanbul-mocha
+.PHONY: test-cov test-istanbul-tape
 
-test-cov: test-istanbul-mocha
+test-cov: test-istanbul-tape
 
-test-istanbul-mocha: node_modules
+test-istanbul-tape: node_modules
 	NODE_ENV=$(NODE_ENV) \
 	NODE_PATH=$(NODE_PATH_TEST) \
 	$(ISTANBUL) cover \
 		--dir $(ISTANBUL_OUT) \
 		--report $(ISTANBUL_REPORT) \
-	$(_MOCHA) -- \
-		--reporter $(MOCHA_REPORTER) \
+	$(TAPE) \
 		$(TESTS)
 
 
@@ -126,17 +130,23 @@ test-browsers: test-testling
 test-testling: node_modules
 	NODE_ENV=$(NODE_ENV) \
 	NODE_PATH=$(NODE_PATH_TEST) \
-	$(TESTLING) \
-		$(TESTLING_DIR)
+	$(BROWSERIFY) \
+		-p $(BROWSERIFY_PROXYQUIRE) \
+		$(TESTS) \
+	| $(TESTLING) \
+	| $(TAP_REPORTER)
 
 view-browser-tests: view-testling
 
 view-testling: node_modules
 	NODE_ENV=$(NODE_ENV) \
 	NODE_PATH=$(NODE_PATH_TEST) \
-	$(TESTLING) \
-		$(TESTLING_DIR) \
-		--x $(OPEN)
+	$(BROWSERIFY) \
+		-p $(BROWSERIFY_PROXYQUIRE) \
+		$(TESTS) \
+	| $(TESTLING) \
+		--x $(OPEN) \
+	| $(TAP_REPORTER)
 
 
 
