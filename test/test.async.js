@@ -227,7 +227,7 @@ describe( 'async', function tests() {
 				'encoding': 'utf8'
 			});
 
-			fpath2 = path.join( path.resolve( __dirname, '../lib/default' ), 'Makefile' );
+			fpath2 = path.join( path.resolve( __dirname, '../templates/default' ), 'Makefile' );
 			f2 = fs.readFileSync( fpath2, {
 				'encoding': 'utf8'
 			});

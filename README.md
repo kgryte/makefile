@@ -59,7 +59,7 @@ The function accepts the same `options` as the asynchronous version.
 
 ## Notes
 
-* 	Supported templates may be found in the `./lib` directory and are named according to the directory name.
+* 	Supported templates may be found in the `./templates` directory and are named according to the directory name.
 
 
 ## Examples
@@ -162,7 +162,7 @@ $ make view-cov
 
 ## Copyright
 
-Copyright &copy; 2015. Athan Reines.
+Copyright &copy; 2015-2106. Athan Reines.
 
 
 [npm-image]: http://img.shields.io/npm/v/@kgryte/makefile.svg
